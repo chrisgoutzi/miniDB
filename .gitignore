@@ -2,3 +2,4 @@ dbdata/
 __pycache__/
 venv/
 .vscode
+*.txt
