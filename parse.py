@@ -402,3 +402,24 @@ class Parser:
             self.nextToken()
 
         return [ident, operator, other_ident]
+
+
+    def setUp(self):
+        
+        self.db = Database('smdb', load=False)
+
+        self.db.create_table('classroom', ['building', 'roomNumber', 'capacity'], [str,str,int])
+        self.db.create_table('department', ['deptName', 'building', 'budget'], [str,str,int])
+
+        self.db.insert('classroom', ['Packard', '101', '500'])
+        self.db.insert('classroom', ['Painter', '514', '10'])
+        self.db.insert('classroom', ['Taylor', '3128', '70'])
+        self.db.insert('classroom', ['Watson', '100', '30'])
+        self.db.insert('classroom', ['Watson', '120', '50'])
+        self.db.insert('department', ['Biology', 'Watson', '90000'])
+        self.db.insert('department', ['Comp. Sci.', 'Taylor', '100000'])
+        self.db.insert('department', ['Elec. Eng.', 'Taylor', '85000'])
+        self.db.insert('department', ['Finance', 'Painter', '120000'])
+        self.db.insert('department', ['History', 'Painter', '50000'])
+        self.db.insert('department', ['Music', 'Packard', '80000'])
+        self.db.insert('department', ['Physics', 'Watson', '70000'])
