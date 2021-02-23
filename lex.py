@@ -2,7 +2,10 @@ import sys
 
 class Lexer:
     def __init__(self, input):
-        pass
+        self.source = input
+        self.curChar = ''   # Current character in the string.
+        self.curPos = -1    # Current position in the string.
+        self.nextChar()
 
     # Process the next character.
     def nextChar(self):
