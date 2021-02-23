@@ -49,6 +49,8 @@ class Lexer:
         # If it is a multiple character operator (e.g, >=), number, identifier, or keyword then we will process the rest.
         if self.curChar == '*':
             token =  Token(self.curChar, TokenType.ASTERISK)
+        elif self.curChar == '\n':
+            token = Token (self.curChar, TokenType.NEWLINE)
         elif self.curChar == ';':
             token = Token(self.curChar, TokenType.SEMICOLON)
         elif self.curChar == '.':
@@ -149,6 +151,7 @@ class TokenType(enum.Enum):
     LPARENS = 6
     RPARENS = 7
     DOT = 8
+    NEWLINE = 9
     # Keywords.
     SELECT = 101
     FROM = 102
