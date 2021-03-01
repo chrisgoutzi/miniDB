@@ -160,20 +160,22 @@ class Parser:
                     
                     if self.checkToken(TokenType.SEMICOLON):
                         self.semicolon()
+                        for i in range(len(columns)):
+                            columns[i] = table_name + "_" + columns[i]
                         self.db.inner_join(table_name, other_table_name, condition, return_object=True)._select_where(columns)
                     elif self.checkToken(TokenType.WHERE):
                         self.nextToken()
                         comparisonTokens = self.comparison()
+                        comparisonTokens[0].text = table_name + "_" + comparisonTokens[0].text
                         comparison = ""
                         for i in range(len(comparisonTokens)):
                             comparison += comparisonTokens[i].text
                         self.semicolon()
                         print(columns)
+                        for i in range(len(columns)):
+                            columns[i] = table_name + "_" + columns[i]
                         self.db.inner_join(table_name, other_table_name, condition, return_object=True)._select_where(columns, comparison)
                         
-
-                    self.semicolon()
-                    self.db.inner_join(table_name, other_table_name, condition, return_object=True)._select_where(columns)
 
         elif self.checkToken(TokenType.CREATE):
             self.match(TokenType.CREATE)

@@ -106,7 +106,7 @@ class Lexer:
             # Leading character is a letter, so this must be an identifier or a keyword.
             # Get all consecutive alpha numeric characters.
             startPos = self.curPos
-            while self.peek().isalnum():
+            while self.peek().isalnum() or self.peek() == "_" or self.peek() == "-":
                 self.nextChar()
 
             # Check if the token is in the list of keywords.
