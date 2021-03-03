@@ -44,6 +44,7 @@ class Parser:
 
     def query(self):
         # Check the first token to see what kind of query this is.
+        # self.setUp()
         if self.checkToken(TokenType.SELECT):
             # self.setUp()
             self.nextToken()
